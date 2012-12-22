@@ -134,7 +134,7 @@ Literal                     : "NULL"                { $$ = new LiteralNode(null)
                             | "TRUE"                { $$ = new LiteralNode(true); }
                             | "FALSE"               { $$ = new LiteralNode(false); }
                             | "STRING"              { $$ = new LiteralNode(yytext.slice(1, -1)); }
-                            | "NUMBER"              { $$ = new LiteralNode(Number(yytext)); }
+                            | "NUMBER"              { $$ = new LiteralNode(parseNumber(yytext)); }
                             | "REGEXP"              { $$ = new LiteralNode(parseRegExp(yytext)); }
                             ;
 
@@ -148,6 +148,16 @@ ArgumentList                : ConditionalExpression { $$ = [$1]; }
                             ;
 
 %% /* Utility Functions */
+
+function parseNumber(literal) {
+    if (literal.length > 1 && literal[0] === '0' &&
+        literal[1].toLowerCase() !== 'x') {
+        return parseInt(literal, 8);
+    }
+    else {
+        return Number(literal);
+    }
+}
 
 function parseRegExp(literal) {
     var index = literal.lastIndexOf("/"),
