@@ -131,7 +131,6 @@ PrimaryExpression           : Literal
 
 Literal                     : "NULL"                { $$ = new LiteralNode(null); }
                             | "UNDEFINED"           { $$ = new LiteralNode(undefined); }
-                            | "NAN"                 { $$ = new LiteralNode(NaN); }
                             | "TRUE"                { $$ = new LiteralNode(true); }
                             | "FALSE"               { $$ = new LiteralNode(false); }
                             | "STRING"              { $$ = new LiteralNode(parseString(yytext)); }

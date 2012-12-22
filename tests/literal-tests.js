@@ -42,6 +42,5 @@ exports['test regexp literal'] = {
 exports['test other literal'] = {
     'test null': testLiteral('null', null),
     'test undefined': testLiteral('undefined', undefined),
-    'test NaN': function() { assert(isNaN(seval.parse('NaN')())); },
 };
 

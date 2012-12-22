@@ -12,7 +12,7 @@ As a result, I wrote **seval.js**, the simplified `eval()`, for parsing and eval
 * String: `"hello"`, `'world'`.
 * Boolean: `true`, `false`.
 * RegExp: `/[a-z]+/i`.
-* Other: `null`, `undefined`, `NaN`.
+* Other: `null`, `undefined`.
 
 variables:
 

@@ -43,7 +43,6 @@ IdentifierName                      {IdentifierStart}{IdentifierPart}*
 /* Tokens: Literal */
 "null"                              return 'NULL';
 "undefined"                         return 'UNDEFINED';
-"NaN"                               return 'NAN';
 "true"                              return 'TRUE';
 "false"                             return 'FALSE';
 {NumericLiteral}                    return 'NUMBER';
