@@ -225,7 +225,7 @@ function ConditionalExpressionNode(condition, consequent, alternate) {
 function CallExpressionNode(callee, args) {
     this.eval = function (data) {
         var argValues = [];
-            that = 'object' in callee ? callee.object : null;
+            that = 'object' in callee ? callee.object.eval(data) : null;
         for (var index in args) {
             argValues[index] = args[index].eval(data);
         }

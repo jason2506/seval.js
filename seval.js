@@ -10,7 +10,7 @@ performAction: function anonymous(yytext,yyleng,yylineno,yy,yystate,$$,_$) {
 var $0 = $$.length - 1;
 switch (yystate) {
 case 1: return function(data) {
-                                                                return $$[$0-1].eval(data); }; 
+                                                        return $$[$0-1].eval(data); }; 
 break;
 case 2: return function() { return ''; }; 
 break;
@@ -45,12 +45,12 @@ break;
 case 53: this.$ = new MemberExpressionNode($$[$0-3], $$[$0-1]); 
 break;
 case 54: var property = new LiteralNode($$[$0]);
-                                                              this.$ = new MemberExpressionNode($$[$0-2], property); 
+                                                      this.$ = new MemberExpressionNode($$[$0-2], property); 
 break;
 case 56: this.$ = new MemberExpressionNode($$[$0-3], $$[$0-1]); 
 break;
 case 57: var property = new LiteralNode($$[$0]);
-                                                              this.$ = new MemberExpressionNode($$[$0-2], property); 
+                                                      this.$ = new MemberExpressionNode($$[$0-2], property); 
 break;
 case 59: this.$ = new VariableNode($$[$0]); 
 break;
@@ -269,7 +269,7 @@ function ConditionalExpressionNode(condition, consequent, alternate) {
 function CallExpressionNode(callee, args) {
     this.eval = function (data) {
         var argValues = [];
-            that = 'object' in callee ? callee.object : null;
+            that = 'object' in callee ? callee.object.eval(data) : null;
         for (var index in args) {
             argValues[index] = args[index].eval(data);
         }
