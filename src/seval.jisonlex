@@ -14,9 +14,7 @@ LineContinuation                    \\(\r\n|\r|\n)
 OctalEscapeSequence                 (?:[1-7][0-7]{0,2}|[0-7]{2,3})
 HexEscapeSequence                   [x]{HexDigit}{2}
 UnicodeEscapeSequence               [u]{HexDigit}{4}
-SingleEscapeCharacter               [\'\"\\bfnrtv]
-NonEscapeCharacter                  [^\'\"\\bfnrtv0-9xu]
-CharacterEscapeSequence             {SingleEscapeCharacter}|{NonEscapeCharacter}
+CharacterEscapeSequence             [^0-9xu]
 EscapeSequence                      {CharacterEscapeSequence}|{OctalEscapeSequence}|{HexEscapeSequence}|{UnicodeEscapeSequence}
 DoubleStringCharacter               ([^\"\\\n\r]+)|(\\{EscapeSequence})|{LineContinuation}
 SingleStringCharacter               ([^\'\\\n\r]+)|(\\{EscapeSequence})|{LineContinuation}
