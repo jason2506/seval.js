@@ -3,10 +3,10 @@ DecimalDigits                       [0-9]+
 DecimalIntegerLiteral               "0"|([1-9]{DecimalDigits}?)
 ExponentPart                        [eE][+-]?{DecimalDigits}
 DecimalLiteral                      ({DecimalIntegerLiteral}"."{DecimalDigits}?{ExponentPart}?)|("."{DecimalDigits}{ExponentPart}?)|({DecimalIntegerLiteral}{ExponentPart}?)
-OctalDigits                         [0-7]+
-OctalIntegerLiteral                 "0"{OctalDigits}
-HexDigits                           [0-9a-fA-F]+
-HexIntegerLiteral                   "0"[xX]{HexDigits}
+OctalDigit                          [0-7]
+OctalIntegerLiteral                 "0"{OctalDigit}+
+HexDigit                            [0-9a-fA-F]
+HexIntegerLiteral                   "0"[xX]{HexDigit}+
 NumericLiteral                      {HexIntegerLiteral}|{OctalIntegerLiteral}|{DecimalLiteral}
 
 /* Patterns: String Literal */

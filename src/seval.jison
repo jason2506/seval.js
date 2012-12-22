@@ -134,7 +134,7 @@ Literal                     : "NULL"                { $$ = new LiteralNode(null)
                             | "NAN"                 { $$ = new LiteralNode(NaN); }
                             | "TRUE"                { $$ = new LiteralNode(true); }
                             | "FALSE"               { $$ = new LiteralNode(false); }
-                            | "STRING"              { $$ = new LiteralNode(yytext.slice(1, -1)); }
+                            | "STRING"              { $$ = new LiteralNode(parseString(yytext)); }
                             | "NUMBER"              { $$ = new LiteralNode(parseNumber(yytext)); }
                             | "REGEXP"              { $$ = new LiteralNode(parseRegExp(yytext)); }
                             ;
@@ -149,6 +149,12 @@ ArgumentList                : ConditionalExpression { $$ = [$1]; }
                             ;
 
 %% /* Utility Functions */
+
+var continuationPattern = /\\(\r\n|\r|\n)/g;
+
+function parseString(literal) {
+    return JSON.parse('"' + literal.slice(1, -1).replace(continuationPattern, '') + '"');
+}
 
 function parseNumber(literal) {
     if (literal.length > 1 && literal[0] === '0' &&
