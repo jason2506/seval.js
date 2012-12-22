@@ -3,6 +3,7 @@
 
 Expression                  : ConditionalExpression EOF
                                                     { return function(data) {
+                                                        if (data === undefined) data = {};
                                                         return $1.eval(data); }; }
                             | EOF                   { return function() { return ''; }; }
                             ;
