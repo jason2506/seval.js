@@ -32,7 +32,7 @@ RegularExpressionBody               {RegularExpressionFirstChar}{RegularExpressi
 RegularExpressionLiteral            \/{RegularExpressionBody}\/{RegularExpressionFlags}
 
 /* Patterns: Identifier */
-IdentifierStart                     [$_A-Za-z\x7f-\uffff]
+IdentifierStart                     [$_A-Za-z\x7f-\uffff]|\\{UnicodeEscapeSequence}
 IdentifierPart                      {IdentifierStart}|[0-9]
 IdentifierName                      {IdentifierStart}{IdentifierPart}*
 
