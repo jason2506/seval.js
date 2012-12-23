@@ -5,6 +5,7 @@ function entend(target, source) {
 }
 
 entend(exports, require('./literal-tests'));
+entend(exports, require('./variable-tests'));
 
 if (require.main === module) {
     require('test').run(exports);
