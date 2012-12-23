@@ -1,6 +1,3 @@
-var assert = require('assert'),
-    seval = require('../lib/seval').parser;
-
 function entend(target, source) {
     for (var property in source) {
         target[property] = source[property];
