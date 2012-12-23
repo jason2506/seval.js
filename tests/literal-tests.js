@@ -7,6 +7,12 @@ function testLiteral(literal, expected) {
     };
 }
 
+function testObjectLiteral(literal, expected) {
+    return function() {
+        assert.deepEqual(seval.parse(literal)(), expected);
+    };
+}
+
 exports['test numeric literal'] = {
     'test zero': testLiteral('0', 0),
     'test non-zero number': testLiteral('999', 999),
@@ -36,7 +42,12 @@ exports['test boolean literal'] = {
 };
 
 exports['test regexp literal'] = {
-    // TODO: add test cases
+    'test simplest pattern': testObjectLiteral('/pattern/', /pattern/),
+    'test special characters': testObjectLiteral('/^[0-9]+(?=(-| )([^a-zA-Z]{1,3}.*))?$/',
+                                                  /^[0-9]+(?=(-| )([^a-zA-Z]{1,3}.*))?$/),
+    'test escape characters': testObjectLiteral('/\\^\\w\\xAA\\u03C0[\\]]\\$/',
+                                                 /\^\w\xAA\u03C0[\]]\$/),
+    'test search flags': testObjectLiteral('/pattern/ig', /pattern/ig),
 };
 
 exports['test other literal'] = {
