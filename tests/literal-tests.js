@@ -1,15 +1,15 @@
 var assert = require('assert'),
-    seval = require('../lib/seval').parser;
+    seval = require('../lib/seval');
 
 function testLiteral(literal, expected) {
     return function() {
-        assert.strictEqual(seval.parse(literal)(), expected);
+        assert.strictEqual(seval.eval(literal), expected);
     };
 }
 
 function testObjectLiteral(literal, expected) {
     return function() {
-        assert.deepEqual(seval.parse(literal)(), expected);
+        assert.deepEqual(seval.eval(literal), expected);
     };
 }
 

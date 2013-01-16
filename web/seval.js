@@ -584,5 +584,3 @@ var seval = function (parser) {
 };
 return seval(parser);
 })();
-exports.parse = seval.parse;
-exports.eval = seval.eval;

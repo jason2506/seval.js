@@ -1,5 +1,5 @@
 var assert = require('assert'),
-    seval = require('../lib/seval').parser;
+    seval = require('../lib/seval');
 
 function testOperator(str, test) {
     var expr = seval.parse(str);
@@ -11,7 +11,7 @@ function testOperator(str, test) {
 
 function testExpression(expr, expected) {
     return function() {
-        assert.strictEqual(seval.parse(expr)(), expected);
+        assert.strictEqual(seval.eval(expr), expected);
     };
 }
 

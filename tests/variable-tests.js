@@ -1,12 +1,12 @@
 var assert = require('assert'),
-    seval = require('../lib/seval').parser;
+    seval = require('../lib/seval');
 
 function testVariable(variable, value) {
     var data = {};
     data[variable] = value;
 
     return function() {
-        assert.strictEqual(seval.parse(variable)(data), value);
+        assert.strictEqual(seval.eval(variable, data), value);
     };
 }
 
